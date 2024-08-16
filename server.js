@@ -1,8 +1,22 @@
-var http = require('http');
-//fuihgrdf
-http.createServer(function(request, response) {
-    response.writeHead(200, {
-        'Content-Type':'text/plain'
-    });
-    response.end("Hello Node");
-}).listen(3000, console.log("server is running on port: 3000"));
+const express = require('express');
+const colors = require('colors');
+const morgan = require('morgan');
+const dotenv = require('dotenv');
+const connectDB = require('./config/db');
+const user = require('./routes/user');
+
+const app = express();
+
+dotenv.config({
+    path: './config/config.env'
+});
+
+connectDB();
+
+app.use('/api/todo/auth', user);
+app.use(morgan('dev'));
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT,
+    console.log(`Server running on port: ${PORT}`.blue));
