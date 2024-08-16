@@ -1,0 +1,11 @@
+{
+  "name": "todoapi",
+  "version": "1.0.0",
+  "description": "a todo apiproject",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ritik",
+  "license": "ISC"
+}
