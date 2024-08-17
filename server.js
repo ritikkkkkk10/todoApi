@@ -7,6 +7,13 @@ const user = require('./routes/user');
 
 const app = express();
 
+app.use(morgan('dev'));
+
+app.use(express.json({}));
+app.use(express.json({
+    extended: true
+}));
+
 dotenv.config({
     path: './config/config.env'
 });
@@ -14,7 +21,7 @@ dotenv.config({
 connectDB();
 
 app.use('/api/todo/auth', user);
-app.use(morgan('dev'));
+
 
 const PORT = process.env.PORT || 3000;
 
